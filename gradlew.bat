@@ -15,6 +15,9 @@
 @rem
 
 @if "%DEBUG%" == "" @echo off
+
+rem Attempt to set JAVA_HOME to JDK 24. Adjust this path if your JDK 24 is installed elsewhere.
+set "JAVA_HOME=C:\Program Files\Java\jdk-24"
 @rem ##########################################################################
 @rem
 @rem  Gradle startup script for Windows
