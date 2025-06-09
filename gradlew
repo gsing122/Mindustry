@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# Attempt to set JAVA_HOME to the auto-detected JDK 21.
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
+
 #
 # Copyright 2015 the original author or authors.
 #
