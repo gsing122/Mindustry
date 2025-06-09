@@ -333,7 +333,7 @@ public class Universe{
         return seconds() + secondCounter;
     }
 
-    private void save(){
+    public void save(){ // Make this public
         Core.settings.put("utimei", seconds);
         Core.settings.put("turn", turn);
     }
