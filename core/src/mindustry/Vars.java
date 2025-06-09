@@ -13,10 +13,13 @@ import mindustry.ai.*;
 import mindustry.async.*;
 import mindustry.core.*;
 import mindustry.ctype.*;
+// Add this import
+import mindustry.content.ErekirTechTree;
 import mindustry.editor.*;
 import mindustry.entities.*;
 import mindustry.game.EventType.*;
 import mindustry.game.*;
+import mindustry.game.Universe; // Make sure this is imported if not already
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.input.*;
@@ -344,6 +347,14 @@ public class Vars implements Loadable{
             "java";
 
         state = new GameState();
+
+        // Add the call here
+        if(!headless){ // Only run on client
+             ErekirTechTree.unlockAllErekirResearch();
+             if(universe != null){ // Add this null check for safety
+                 universe.save(); // Add this line to trigger save
+             }
+        }
 
         mobile = Core.app.isMobile() || testMobile;
         ios = Core.app.isIOS();
