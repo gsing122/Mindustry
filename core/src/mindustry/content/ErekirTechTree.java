@@ -482,7 +482,7 @@ public class ErekirTechTree{
             if (node != null && node.content != null) {
                 if (Vars.state != null && Vars.state.rules != null && Vars.state.rules.researched != null) {
                     Vars.state.rules.researched.add(node.content);
-                    node.content.onResearch(); // Call onResearch() - This line is important
+                    node.content.onUnlock(); // Call onResearch() - This line is important
                 }
             }
         });

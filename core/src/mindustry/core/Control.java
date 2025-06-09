@@ -12,6 +12,8 @@ import arc.struct.*;
 import arc.util.*;
 import mindustry.*;
 import mindustry.audio.*;
+import mindustry.content.ErekirTechTree;
+import mindustry.content.Planets;
 import mindustry.content.*;
 import mindustry.content.TechTree.*;
 import mindustry.core.GameState.*;
@@ -517,6 +519,9 @@ public class Control implements ApplicationListener, Loadable{
         sector.info.origin = origin;
         sector.info.destination = origin;
         logic.play();
+        if(sector.planet == Planets.erekir){
+            ErekirTechTree.unlockAllErekirResearch();
+        }
         control.saves.saveSector(sector);
         Events.fire(new SectorLaunchEvent(sector));
         Events.fire(Trigger.newGame);

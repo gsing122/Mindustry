@@ -195,7 +195,7 @@ allprojects{
     }
 
     tasks.withType(JavaCompile){
-        targetCompatibility = 8
+        targetCompatibility = JavaVersion.VERSION_17
         sourceCompatibility = JavaVersion.VERSION_17
         options.encoding = "UTF-8"
         options.compilerArgs += ["-Xlint:deprecation"]
@@ -222,10 +222,10 @@ configure(project(":annotations")){
     }
 }
 
-//compile with java 8 compatibility for everything except the annotation project
+//compile with java 17 compatibility for everything except the annotation project
 configure(subprojects - project(":annotations")){
     tasks.withType(JavaCompile){
-        options.compilerArgs.addAll(['--release', '8'])
+        options.compilerArgs.addAll(['--release', '17'])
     }
 
     tasks.withType(Javadoc){
@@ -266,7 +266,7 @@ project(":core"){
     kapt{
         javacOptions{
             option("-source", "17")
-            option("-target", "1.8")
+            option("-target", "17")
         }
     }
 
