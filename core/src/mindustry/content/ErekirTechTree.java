@@ -478,10 +478,11 @@ public class ErekirTechTree{
         }
 
         TechNode rootNode = Planets.erekir.techTree;
-        rootNode.each(node -> {
+        rootNode.each(node -> { // Iterate through all nodes including children
             if (node != null && node.content != null) {
                 if (Vars.state != null && Vars.state.rules != null && Vars.state.rules.researched != null) {
                     Vars.state.rules.researched.add(node.content);
+                    node.content.onResearch(); // Call onResearch() - This line is important
                 }
             }
         });

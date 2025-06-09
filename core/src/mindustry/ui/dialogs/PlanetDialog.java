@@ -19,6 +19,7 @@ import arc.struct.*;
 import arc.util.*;
 import mindustry.*;
 import mindustry.content.*;
+import mindustry.content.ErekirTechTree; // Add this if not present
 import mindustry.content.TechTree.*;
 import mindustry.core.*;
 import mindustry.ctype.*;
@@ -204,7 +205,14 @@ public class PlanetDialog extends BaseDialog implements PlanetInterfaceRenderer{
                 diag.cont.label(() -> selected[0] == null ? "@campaign.none" : "@campaign." + selected[0].name).labelAlign(Align.center).style(Styles.outlineLabel).width(440f).wrap().colspan(2);
 
                 diag.buttons.button("@ok", Icon.ok, () -> {
-                    state.planet = selected[0];
+                    // This is the lambda to modify
+                    state.planet = selected[0]; // After this line
+
+                    // Add this conditional call
+                    if (selected[0] == Planets.erekir) {
+                        ErekirTechTree.unlockAllErekirResearch();
+                    }
+                    // Before this line (or other navigation/save calls)
                     lookAt(state.planet.getStartSector());
                     selectSector(state.planet.getStartSector());
                     settings.put("campaignselect", true);
