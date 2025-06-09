@@ -8,6 +8,10 @@ import mindustry.type.*;
 import mindustry.type.unit.*;
 import mindustry.world.blocks.defense.turrets.*;
 
+// Ensure these imports are present
+import mindustry.Vars;
+import mindustry.content.TechTree.TechNode;
+
 import static mindustry.Vars.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
@@ -465,6 +469,21 @@ public class ErekirTechTree{
                     });
                 });
             });
+        });
+    }
+
+    public static void unlockAllErekirResearch() {
+        if (Planets.erekir == null || Planets.erekir.techTree == null) {
+            return;
+        }
+
+        TechNode rootNode = Planets.erekir.techTree;
+        rootNode.each(node -> {
+            if (node != null && node.content != null) {
+                if (Vars.state != null && Vars.state.rules != null && Vars.state.rules.researched != null) {
+                    Vars.state.rules.researched.add(node.content);
+                }
+            }
         });
     }
 }
